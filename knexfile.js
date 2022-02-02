@@ -17,6 +17,11 @@ const sharedConfig = {
     development: {
       ...sharedConfig,
       connection: { filename: './data/plants.db3' },
-    }
+    },
+    production: {
+      ...sharedConfig,
+      connection: process.env.DATABASE_URL,
+      pool: { min: 2, max: 10 },
+    },
   }
   

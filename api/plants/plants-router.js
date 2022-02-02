@@ -52,30 +52,30 @@ router.delete("/:id", validatePlantId, async (req, res, next) => {
     });
 });
 
-// router.get("/", (req, res, next) => {
-//   // Authenticated user can view a list of created plants.
-//   //this needs restricted middleware at least, not sure if it needs anything else. -AH
-//   Plant.getPlants()
-//     .then((plants) => {
-//       res.status(201).json(plants);
-//     })
-//     .catch((err) => {
-//       res.status(500).json({ message: err.message });
-//     });
-// });
+router.get("/", (req, res, next) => {
+  // Authenticated user can view a list of created plants.
+  //this needs restricted middleware at least, not sure if it needs anything else. -AH
+  Plant.getPlants()
+    .then((plants) => {
+      res.status(201).json(plants);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: err.message });
+    });
+});
 
-// router.get("/:id", validatePlantId, (req, res, next) => {
-//   // A plant can be selected to present user
-//   //this needs restricted middleware
-//   const { id } = req.params;
+router.get("/:id", validatePlantId, (req, res, next) => {
+  // A plant can be selected to present user
+  //this needs restricted middleware
+  const { id } = req.params;
 
-//   Plant.getPlantById(id)
-//     .then((plant) => {
-//       res.status(201).json(plant);
-//     })
-//     .catch((err) => {
-//       res.status(500).json({ message: err.message });
-//     });
-// });
+  Plant.getPlantById(id)
+    .then((plant) => {
+      res.status(201).json(plant);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: err.message });
+    });
+});
 
 module.exports = router;
