@@ -7,10 +7,12 @@
     "start": "serve -s build",
     "server": "nodemon index.js",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
-    },
+    "migrate": "knex migrate:latest",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --silent",
+    "heroku-postbuild": "npm run build",
+    "seed": "knex seed:run",
+    "rollback": "knex migrate:rollback"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Water-my-plants-bw-web-49/back-end"
