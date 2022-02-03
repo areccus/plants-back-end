@@ -19,10 +19,10 @@ const sharedConfig = {
       connection: { filename: './data/plants.db3' },
     },
     production: {
-      ...sharedConfig,
-      connection: { filename: './data/plants.db3' },
-      pool: { min: 2, max: 10 },
-    },
+          ...sharedConfig,
+          connection: process.env.DATABASE_URL,
+          pool: { min: 2, max: 10 },
+        },
   }
 
 // require('dotenv').config()
