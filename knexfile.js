@@ -1,27 +1,21 @@
 const sharedConfig = {
-    client: 'sqlite3',
-    useNullAsDefault: true,
-    migrations: {
-      directory: './data/migrations',
+  client: 'sqlite3',
+  useNullAsDefault: true,
+  migrations: {
+    directory: './data/migrations',
+  },
+  seeds: {
+    directory: './data/seeds',
+  },
+  pool: {
+    afterCreate: (conn, done) => {
+      conn.run('PRAGMA foreign_keys = ON', done)
     },
-    seeds: {
-      directory: './data/seeds',
-    },
-    pool: {
-      afterCreate: (conn, done) => {
-        conn.run('PRAGMA foreign_keys = ON', done)
-      },
-    },
+  },
+}
+module.exports = {
+  development: {
+    ...sharedConfig,
+    connection: { filename: './data/plants.db3' },
   }
-  module.exports = {
-    development: {
-      ...sharedConfig,
-      connection: { filename: './data/plants.db3' },
-    },
-    production: {
-      ...sharedConfig,
-      connection: process.env.DATABASE_URL,
-      pool: { min: 2, max: 10 },
-    },
-  }
-  
+}
