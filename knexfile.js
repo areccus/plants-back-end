@@ -16,11 +16,7 @@ const sharedConfig = {
   module.exports = {
     development: {
       ...sharedConfig,
-      connection: process.env.DEV_DATABASE_URL,
-    },
-    testing: {
-      ...sharedConfig,
-      connection: process.env.TESTING_DATABASE_URL,
+      connection: { filename: './data/plants.db3' },
     },
     production: {
       ...sharedConfig,
@@ -28,3 +24,4 @@ const sharedConfig = {
       pool: { min: 2, max: 10 },
     },
   }
+  
