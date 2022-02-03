@@ -18,10 +18,5 @@ const sharedConfig = {
       ...sharedConfig,
       connection: { filename: './data/plants.db3' },
     },
-    production: {
-      ...sharedConfig,
-      connection: { filename: './data/plants.db3' },
-      pool: { min: 2, max: 10 },
-    },
   }
   
