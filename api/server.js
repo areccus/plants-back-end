@@ -14,7 +14,6 @@ server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
-
 server.use('/api/auth', authRouter)
 server.use('/api/plants', plantsRouter)
 
